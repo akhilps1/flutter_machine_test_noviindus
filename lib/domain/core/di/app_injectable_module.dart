@@ -10,13 +10,13 @@ abstract class AppInjectableModule {
   Future<SharedPreferences> get preferences => SharedPreferences.getInstance();
 
   // @lazySingleton annotation is used for creating a singleton instance lazily.
-  @lazySingleton
-  Dio get dio => Dio(
-        BaseOptions(
-          baseUrl: '${AppSettings.webServiceUrl}/api/',
-          headers: {
-            "Accept": "application/json",
-          },
-        ),
-      );
+  // @lazySingleton
+  // Dio get dio => Dio(
+  //     // BaseOptions(
+  //     //   baseUrl: '${AppSettings.webServiceUrl}/api/',
+  //     //   headers: {
+  //     //     "Accept": "application/json",
+  //     //   },
+  //     // ),
+  //     );
 }
