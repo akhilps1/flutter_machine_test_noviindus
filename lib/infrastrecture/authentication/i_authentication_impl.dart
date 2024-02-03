@@ -65,6 +65,7 @@ class IAuthenticationImpl implements IAuthenticationFacade {
     final token = sharedPreferences.getString('auth-token');
 
     if (token != null) {
+      log(token);
       return right(token);
     }
     return left(

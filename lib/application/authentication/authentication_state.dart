@@ -7,7 +7,6 @@ class AuthenticationState with _$AuthenticationState {
     required String password,
     required String token,
     required Option<Either<MainFailure, String>> failureOrSuccess,
-    
   }) = _AuthenticationState;
 
   factory AuthenticationState.initial() => AuthenticationState(
