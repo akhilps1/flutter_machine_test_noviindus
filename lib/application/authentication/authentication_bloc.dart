@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_machine_test/application/core/serveice/custom_toast.dart';
@@ -31,7 +33,7 @@ class AuthenticationBloc
   ) {
     emit(
       state.copyWith(
-        password: event.userName,
+        userName: event.userName,
       ),
     );
   }
@@ -51,11 +53,13 @@ class AuthenticationBloc
     Authenticate event,
     Emitter<AuthenticationState> emit,
   ) async {
-    if (state.userName.isEmpty || state.password.isEmpty) {
+    log(state.userName);
+    log(state.password);
+
+    if (state.userName.isEmpty && state.password.isEmpty) {
       CustomToast.errorToast(message: 'Fill all required fields');
       return;
     }
-
     final response = await iAuthenticationFacade.authentcate(
       userName: state.userName,
       password: state.password,

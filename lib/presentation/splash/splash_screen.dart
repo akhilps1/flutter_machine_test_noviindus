@@ -39,6 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
             }
 
             if (failureOrSuccess.isLeft()) {
+              context.read<AuthenticationBloc>().add(const ClearFailure());
               Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(
                     builder: (_) => const AuthenticationScreen(),
