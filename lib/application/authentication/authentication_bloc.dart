@@ -20,7 +20,9 @@ class AuthenticationBloc
   ) : super(AuthenticationState.initial()) {
     on<UserNameChaned>(_userNameChanged);
     on<PasswdChanged>(_passwordChanged);
-    on<Authenticate>(_authenticate);
+    on<Authenticate>(
+      _authenticate,
+    );
     on<CheckAuthenticated>(_checkAuthenticate);
     on<ClearFailure>(_clearFailure);
   }

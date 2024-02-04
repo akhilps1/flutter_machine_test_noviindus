@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -10,6 +9,7 @@ import 'package:flutter_machine_test/domain/patient/i_patients_facade.dart';
 import 'package:flutter_machine_test/domain/patient/model/patient.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 
 part 'patients_event.dart';
 part 'patients_state.dart';
@@ -27,7 +27,10 @@ class PatientsBloc extends Bloc<PatientsEvent, PatientsState> {
       },
     );
 
-    on<GetPatients>(_getPatients);
+    on<GetPatients>(
+      _getPatients,
+      transformer: droppable(),
+    );
   }
 
   final IPatientsFacade iPatientsFacade;
@@ -73,5 +76,11 @@ class PatientsBloc extends Bloc<PatientsEvent, PatientsState> {
         );
       },
     );
+  }
+
+  @override
+  Future<void> close() {
+    authenticationSubscription.cancel();
+    return super.close();
   }
 }

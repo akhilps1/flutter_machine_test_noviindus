@@ -26,6 +26,8 @@ class IPatientsImpl implements IPatientsFacade {
       if (response.statusCode == 200) {
         Map<String, dynamic> responseData = json.decode(response.body);
 
+        log(response.body);
+
         return right(
           [
             ...responseData['patient'].map(

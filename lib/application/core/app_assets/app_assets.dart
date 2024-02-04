@@ -7,4 +7,9 @@ class AppAssets {
   static const logo = '$baseDir/logo.png';
   static const person = '$baseDir/f7_person-2.png';
   static const callender = '$baseDir/uil_calender.png';
+  static const close = '$baseDir/carbon_close-filled.png';
+  static const edit = '$baseDir/material-symbols_edit-outline.png';
+  static const callenderGreen = '$baseDir/uil_calender (1).png';
+  static const add = '$baseDir/ic_outline-plus.png';
+  static const subtract = '$baseDir/ic_outline-minus.png';
 }

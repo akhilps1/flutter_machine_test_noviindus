@@ -69,6 +69,8 @@ class CustomTextFeild extends StatelessWidget {
         ),
         decoration: InputDecoration(
           hintText: hintText,
+          suffixIconColor: const Color(0xFF006837),
+          suffixIconConstraints: const BoxConstraints(minHeight: 30),
           suffixIcon: suffixIcon,
           isDense: true,
           contentPadding:

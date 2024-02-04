@@ -87,8 +87,8 @@ Branch _$BranchFromJson(Map<String, dynamic> json) => Branch(
     );
 
 Map<String, dynamic> _$BranchToJson(Branch instance) => <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
+      'id': instance.id,
       'patients_count': instance.patientsCount,
       'location': instance.location,
       'phone': instance.phone,

@@ -1,5 +1,5 @@
+import 'package:flutter_machine_test/domain/register/models/treatment.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 
 part 'patient.g.dart';
 
@@ -96,9 +96,11 @@ class Patientdetails {
 }
 
 @JsonSerializable()
-class Branch {
-  int? id;
+class Branch extends ObjectWithName {
+  @override
   String? name;
+  @override
+  int? id;
   @JsonKey(name: 'patients_count')
   int? patientsCount;
   String? location;

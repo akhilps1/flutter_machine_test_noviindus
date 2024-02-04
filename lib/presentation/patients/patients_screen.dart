@@ -88,7 +88,6 @@ class _PatientsScreenState extends State<PatientsScreen> {
                                     ),
                                     Expanded(
                                       child: TextField(
-                                        autofocus: true,
                                         onSubmitted: (value) async {},
                                         decoration: InputDecoration(
                                           hintText: 'Search for treatments',
@@ -344,33 +343,35 @@ class _PatientsScreenState extends State<PatientsScreen> {
           );
         },
       ),
-      bottomSheet: Container(
-        padding: const EdgeInsets.all(10),
-        color: Colors.white,
-        child: SizedBox(
-          width: double.infinity,
-          height: 45,
-          child: CustomButton(
-            onPress: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const RegisterScreen(),
+      bottomSheet: !context.watch<PatientsBloc>().state.isLoading
+          ? Container(
+              padding: const EdgeInsets.all(10),
+              color: Colors.white,
+              child: SizedBox(
+                width: double.infinity,
+                height: 45,
+                child: CustomButton(
+                  onPress: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const RegisterScreen(),
+                      ),
+                    );
+                  },
+                  color: const Color(0xFF006837),
+                  widget: const Text(
+                    'Register Now',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),
+                  ),
                 ),
-              );
-            },
-            color: const Color(0xFF006837),
-            widget: const Text(
-              'Register Now',
-              style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
               ),
-            ),
-          ),
-        ),
-      ),
+            )
+          : null,
     );
   }
 }
